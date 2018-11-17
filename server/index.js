@@ -6,6 +6,10 @@ dotenv.config({ path: __dirname + '/.env'});
 const port = process.env.PORT || 4000;
 const apiKey = process.env.API_KEY;
 
+const helmet = require('helmet');
+
+app.use(helmet());
+
 app.get('/', (request, response) => {
     response.status(200);
     response.send('yayyyyyyyyyyy it works');
