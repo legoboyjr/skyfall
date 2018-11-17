@@ -7,6 +7,15 @@ app.get('/', (request, response) => {
     response.send('yayyyyyyyyyyy it works');
 });
 
+app.get('/forecast/coords/:lat,:lon', (req, res) => {
+    const { lat, lon } = req.params;
+    res.status(200);
+    res.json({
+        lat: lat,
+        lon: lon
+    })
+});
+
 app.listen(port, () => {
     console.log(`now listening on port: ${port}`);
-})
+});
