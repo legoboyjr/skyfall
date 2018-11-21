@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const axios = require('axios');
+const path = require('path');
 const app = express();
 dotenv.config({ path: __dirname + '/.env'});
 const port = process.env.PORT || 4000;
@@ -9,11 +10,8 @@ const apiKey = process.env.API_KEY;
 const helmet = require('helmet');
 
 app.use(helmet());
-
-app.get('/', (request, response) => {
-    response.status(200);
-    response.send('yayyyyyyyyyyy it works');
-});
+const staticPath = path.resolve(__dirname, '../client/build');
+app.use(express.static(staticPath));
 
 app.get('/forecast/coords/:lat,:lon', (req, res) => {
     const { lat, lon } = req.params;
