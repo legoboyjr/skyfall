@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { getCurrentPosition } from '@blinkmobile/geolocation';
 import './App.css';
 
 class App extends Component {
@@ -11,8 +12,18 @@ class App extends Component {
     }
     this.fetchWeather = this.fetchWeather.bind(this);
   }
-  componentDidMount() {
-    this.fetchWeather(0,0);
+  componentDidMount(){
+    getCurrentPosition()
+      .then(position => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        return this.fetchWeather(lat, lon);
+      })
+      .catch(err => {
+        this.setState({
+          error: err
+        })
+      });
   }
   fetchGeoLocation() {}
   fetchWeather(lat, lon) {
