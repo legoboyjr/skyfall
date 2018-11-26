@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getCurrentPosition } from '@blinkmobile/geolocation';
 import { fetchWeather } from './helpers';
+import {} from 'react-loader-spinner';
 import './App.css';
 
 
@@ -9,7 +10,8 @@ class App extends Component {
     super(props);
     this.state = {
       weather: {},
-      error: null
+      error: null,
+      loading: true
     }
   }
   componentDidMount(){
@@ -21,7 +23,8 @@ class App extends Component {
       })
       .then(weather => {
         this.setState({
-          weather: weather
+          weather: weather,
+          loading: false
         })
       })
       .catch(err => {
@@ -33,6 +36,10 @@ class App extends Component {
   fetchGeoLocation() {}
 
   render() {
+    const { loading, weather, error } = this.state;
+    if (loading){
+      return <loader type="puff" color="black" height="80%" width="80%" />
+    }
     return (
       <div>
         <pre>{JSON.stringify(this.state.weather, null, 2)}</pre>
