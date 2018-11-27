@@ -24,7 +24,7 @@ app.get('/forecast/coords/:lat,:lon', (req, res) => {
             weather:weather
         })
     })
-    .catch(err => {
+    .catch(err => {``
         res.status(err.responce.status || 500);
         res.send(err.message || "uh oh");
     })
