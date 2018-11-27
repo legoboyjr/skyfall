@@ -25,7 +25,7 @@ app.get('/forecast/coords/:lat,:lon', (req, res) => {
         })
     })
     .catch(err => {
-        res.status(err.status || 500);
+        res.status(err.responce.status || 500);
         res.send(err.message || "uh oh");
     })
 });
