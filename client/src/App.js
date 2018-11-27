@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { getCurrentPosition } from '@blinkmobile/geolocation';
 import { fetchWeather } from './helpers';
-import {} from 'react-loader-spinner';
+import Loader from 'react-loader-spinner';
 import './App.css';
 
 
@@ -28,17 +28,24 @@ class App extends Component {
         })
       })
       .catch(err => {
+        console.log(err)
         this.setState({
-          error: err
+          error: err,
+          loading: false
         })
       });
   }
-  fetchGeoLocation() {}
+  isGeoError(err) {
+    return err && err.code && err.message;
+  }
 
   render() {
     const { loading, weather, error } = this.state;
-    if (loading){
-      return <loader type="puff" color="black" height="80%" width="80%" />
+    if(loading){
+      return <Loader type="Puff" color="black" height="80" width="80" />
+    }
+    if(error && !this.isGeoError(error)) {
+      return <h1>Please try again later....</h1>
     }
     return (
       <div>
