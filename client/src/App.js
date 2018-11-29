@@ -23,19 +23,19 @@ class App extends Component {
   updateWeather(e) {
     e.preventDefault();
     const { lat, lon } = this.state;
-    fetchWeather(lat,lon)
-     .then(weather => {
-       this.setState({
-         weather: weather
-       });
-     })
-     .catch(err => {
-       this.setState({
-        error: err
-       });
-     });
+    fetchWeather(lat, lon)
+      .then(weather => {
+        this.setState({
+          weather: weather
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err
+        });
+      });
   }
-  componentDidMount(){
+  componentDidMount() {
     getCurrentPosition()
       .then(position => {
         const lat = position.coords.latitude;
@@ -66,34 +66,43 @@ class App extends Component {
 
   render() {
     const { loading, weather, error, lat, lon } = this.state;
-    if(loading){
+    if (loading) {
       return <Loader type="Puff" color="black" height="80" width="80" />
     }
-    if(error && !this.isGeoError(error)) {
+    if (error && !this.isGeoError(error)) {
       return <h1>Please try again later....</h1>
     }
     return (
       <div>
-        <form onSubmit={this.updateWeather}>
-          <input type="number" value={lat} 
-          onChange={e => this.setState({ lat: e.target.value })} 
-          placeholder="Latitude" 
-          required
-          min="-90"
-          max="90"
-          />
-          <input type="number" value={lon} 
-          onChange={e => this.setState({ lon: e.target.value })} 
-          placeholder="Longitude" 
-          required
-          min="-180"
-          max="180"
-          />
-          <button type="submit">Go!</button>
-        </form>
-        <CurrentWeather data={weather.currently} />
-        <DailyWeather data={weather.daily} />
-        <HourlyWeather data={weather.hourly} />
+        <div className='bg-primary pb-2'>
+          <form onSubmit={this.updateWeather}>
+            <input className='bg-dark text-white w-25 border border-dark mr-1 p-1 mt-2 ml-3' type="number" value={lat}
+              onChange={e => this.setState({ lat: e.target.value })}
+              placeholder="Latitude"
+              required
+              min="-90"
+              max="90"
+            />
+            <input className='bg-dark text-white w-25 border border-dark mr-1 p-1 mt-2' type="number" value={lon}
+              onChange={e => this.setState({ lon: e.target.value })}
+              placeholder="Longitude"
+              required
+              min="-180"
+              max="180"
+            />
+            <button className='btn-dark rounded border-0 p-1' type="submit">Go!</button>
+          </form>
+        </div>
+        <div className='d-flex flex-column justify-content-between align-items-center vh-100'>
+          <div className='d-flex h-25'>
+            <CurrentWeather data={weather.currently} />
+            <HourlyWeather data={weather.hourly} />
+          </div>
+
+          <div className='d-flex flex-grow-1'>
+            <DailyWeather data={weather.daily} />
+          </div>
+        </div>
       </div>
     );
   }

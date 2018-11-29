@@ -1,11 +1,14 @@
 import React from 'react'
 
 const singleHour = hour =>
+<div>
     <p key={hour.time}>
         Temperatures {hour.apparentTemperature}&deg;
+    </p>
+    <p key={hour.time}>
         Time: {new Date(hour.time * 1000).toString()}
     </p>
-
+</div>
 
 function HourlyWeather(props) {
     const { data } = props.data;
@@ -13,9 +16,9 @@ function HourlyWeather(props) {
     const items = threeHours
         .map(singleHour)
     return (
-        <h1>
+        <h4 className='pr-3 h-100 bg-dark text-white'>
             {items}
-        </h1>
+        </h4>
     )
 }
 
