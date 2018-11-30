@@ -93,15 +93,10 @@ class App extends Component {
             <button className='btn-dark rounded border-0 p-1' type="submit">Go!</button>
           </form>
         </div>
-        <div className='d-flex flex-column justify-content-between align-items-center vh-100'>
-          <div className='d-flex h-25'>
-            <CurrentWeather data={weather.currently} />
-            <HourlyWeather data={weather.hourly} />
-          </div>
-
-          <div className='d-flex flex-grow-1'>
-            <DailyWeather data={weather.daily} />
-          </div>
+        <div className=''>
+          <CurrentWeather data={weather.currently} />
+          <HourlyWeather data={weather.hourly} />
+          <DailyWeather data={weather.daily} />
         </div>
       </div>
     );

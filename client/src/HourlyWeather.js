@@ -16,7 +16,7 @@ function HourlyWeather(props) {
     const items = threeHours
         .map(singleHour)
     return (
-        <h4 className='pr-3 h-100 bg-dark text-white'>
+        <h4 className='bg-dark text-white'>
             {items}
         </h4>
     )
