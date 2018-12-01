@@ -73,7 +73,7 @@ class App extends Component {
       return <h1>Please try again later....</h1>
     }
     return (
-      <div>
+      <div className="vh-100 d-flex flex-column">
         <div className='bg-primary pb-2'>
           <form onSubmit={this.updateWeather}>
             <input className='bg-dark text-white w-25 border border-dark mr-1 p-1 mt-2 ml-3' type="number" value={lat}
@@ -93,11 +93,17 @@ class App extends Component {
             <button className='btn-dark rounded border-0 p-1' type="submit">Go!</button>
           </form>
         </div>
-        <div className=''>
-          <CurrentWeather data={weather.currently} />
-          <HourlyWeather data={weather.hourly} />
-          <DailyWeather data={weather.daily} />
+        <div className="d-flex flex-grow-1">
+          <div className='d-flex flex-column'>
+            <CurrentWeather data={weather.currently} />
+            <DailyWeather data={weather.daily} />
+
+          </div>
+          <div className="d-flex flex-column flex-grow-1">
+            <HourlyWeather data={weather.hourly} />
+          </div>
         </div>
+
       </div>
     );
   }

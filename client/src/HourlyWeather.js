@@ -1,11 +1,11 @@
 import React from 'react'
 
 const singleHour = hour =>
-<div>
-    <p key={hour.time}>
+<div key={hour.time}>
+    <p>
         Temperatures {hour.apparentTemperature}&deg;
     </p>
-    <p key={hour.time}>
+    <p >
         Time: {new Date(hour.time * 1000).toString()}
     </p>
 </div>
@@ -16,9 +16,9 @@ function HourlyWeather(props) {
     const items = threeHours
         .map(singleHour)
     return (
-        <h4 className='bg-dark text-white'>
+        <div className='m-0 bg-dark text-white flex-grow-1 d-flex flex-column align-items-center pt-5'>
             {items}
-        </h4>
+        </div>
     )
 }
 

@@ -6,7 +6,10 @@ function DailyWeather(props) {
     const firstDay = data[0];
     const { apparentTemperatureMax } = firstDay;
     return (
-        <h3> The first day forcast: {apparentTemperatureMax} &deg;F</h3>
+        <div className='d-flex justify-content-center pt-5 flex-grow-1'>
+            <h3 className='m-0'> The first day forcast: {apparentTemperatureMax} &deg;F</h3>
+        </div>
+        
     )
 }
 
