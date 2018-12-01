@@ -74,23 +74,23 @@ class App extends Component {
     }
     return (
       <div className="vh-100 d-flex flex-column">
-        <div className='bg-primary pb-2'>
+        <div className='bg-dark pb-2 border-bottom border-white'>
           <form onSubmit={this.updateWeather}>
-            <input className='bg-dark text-white w-25 border border-dark mr-1 p-1 mt-2 ml-3' type="number" value={lat}
+            <input className='bg-primary text-white w-25 border border-dark mr-1 p-1 mt-2 ml-3' type="number" value={lat}
               onChange={e => this.setState({ lat: e.target.value })}
               placeholder="Latitude"
               required
               min="-90"
               max="90"
             />
-            <input className='bg-dark text-white w-25 border border-dark mr-1 p-1 mt-2' type="number" value={lon}
+            <input className='bg-primary text-white w-25 border border-dark mr-1 p-1 mt-2' type="number" value={lon}
               onChange={e => this.setState({ lon: e.target.value })}
               placeholder="Longitude"
               required
               min="-180"
               max="180"
             />
-            <button className='btn-dark rounded border-0 p-1' type="submit">Go!</button>
+            <button className='btn-primary rounded border-0 p-1' type="submit">Go!</button>
           </form>
         </div>
         <div className="d-flex flex-grow-1">
