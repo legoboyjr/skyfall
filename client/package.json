@@ -5,6 +5,7 @@
   "dependencies": {
     "@blinkmobile/geolocation": "^2.0.3",
     "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-loader-spinner": "^2.2.0",

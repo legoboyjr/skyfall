@@ -21,6 +21,7 @@ function HourlyWeather(props) {
         .map(singleHour)
     return (
         <div className='m-0 bg-dark text-white flex-grow-1 d-flex flex-column align-items-center pt-5' style={{ overflowY: 'scroll' }}>
+            <h2>Hourly Weather:</h2>
             {items}
         </div>
     )
